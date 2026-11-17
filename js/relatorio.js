@@ -8,7 +8,7 @@ TF.boot('relatorio', (root) => {
   const rel = q.relatorio({ periodo, grupo });
   const hoje = new Date().toLocaleDateString('pt-BR');
 
-  const tabela = (cab, linhas) => el('div', { class: 'tbl-wrap' }, el('table', { class: 't' },
+  const tabela = (cab, linhas) => el('div', { class: 'tbl-wrap table-scroll' }, el('table', { class: 't' },
     el('thead', {}, el('tr', {}, cab.map((h) => el('th', { scope: 'col' }, h)))), el('tbody', {}, linhas.map((l) => el('tr', {}, l.map((c) => el('td', {}, c)))))));
 
   const corpo = rel.n ? [

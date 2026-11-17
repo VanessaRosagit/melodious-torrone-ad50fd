@@ -411,3 +411,59 @@ html.hc .foot h2 { color: var(--laranja); }
   .kpis.c3, .kpis.c5 { grid-template-columns: 1fr; }
   h1.title { font-size: clamp(1.9rem, 9vw, 2.4rem); }
 }
+
+/* ---------- responsivo v2 (correções) ---------- */
+@media print { .table-scroll { overflow: visible !important; } .table-scroll table.t { min-width: 0 !important; } }
+.nav { scrollbar-width: none; -webkit-overflow-scrolling: touch; } .nav::-webkit-scrollbar { display: none; }
+.bub .arq { flex-wrap: wrap; min-width: 0; } .bub .arq > div { min-width: 0; overflow-wrap: anywhere; }
+img, svg, canvas, video { max-width: 100%; }
+.tbl-wrap { max-width: 100%; }
+/* telas de toque e celulares: alvos de toque de pelo menos 40 px */
+@media (max-width: 860px), (pointer: coarse) {
+  .chip { min-height: 2.5rem; display: inline-flex; align-items: center; }
+  .nav a { padding: .65rem 0; }
+  .icon-btn { min-width: 2.5rem; min-height: 2.5rem; }
+  .link-btn { min-height: 2.5rem; padding: .2rem .5rem; }
+  .sel, .search, .inp { min-height: 2.75rem; }
+  .seg button { min-height: 2.5rem; padding: .3rem 1rem; }
+  .sug button { min-height: 2.5rem; }
+  .bub .arq .btn { min-height: 2.5rem; }
+  .crumb a { display: inline-block; padding: .55rem 0; }
+  .foot a { display: inline-block; padding: .5rem 0; }
+}
+@media (max-width: 860px) {
+  .search { min-width: 0; width: 100%; flex: 1 1 12rem; }
+  .row-between, .tools, .filtros { flex-wrap: wrap; }
+  .fab { right: 1rem; bottom: 1rem; }
+  .foot { padding-bottom: 4.5rem; }
+  .rpt { padding: 1.2rem 1rem 3rem; } .rpt h1 { font-size: 1.8rem; } .rpt .acoes { flex-wrap: wrap; }
+  .rpt .acoes .btn { flex: 1 1 10rem; }
+}
+@media (max-width: 480px) {
+  .a11y { gap: .35rem; padding: .6rem .8rem .2rem; flex-wrap: nowrap; justify-content: center; }
+  .a11y .rot { display: none; }
+  .a11y .chip { padding-left: .7rem; padding-right: .7rem; white-space: nowrap; }
+  .a11y .chip.hc { padding-left: .8rem; padding-right: .8rem; }
+  /* indicadores em duas colunas para a página não ficar enorme */
+  .kpis, .kpis.c3, .kpis.c5 { grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .kpis > .kpi:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .kpi { padding: .9rem 1rem; } .kpi .n { font-size: 1.9rem; }
+  .card { padding: 1.1rem 1rem; }
+  .chat { height: 30rem; } .msgs { padding: .9rem; }
+  .sug { padding: .6rem .9rem 0; }
+}
+@media (max-width: 340px) { .kpi .n { font-size: 1.6rem; } .kpi .t { font-size: .68rem; } }
+/* tabelas: coluna de progresso e prazo nunca se sobrepõem */
+.prog { white-space: nowrap; } .prog .bar { flex: none; }
+table.t td:last-child { white-space: nowrap; }
+@media (max-width: 860px) {
+  .kpis { grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); }
+  .kpis.c3, .kpis.c5 { grid-template-columns: 1fr 1fr; }
+  .kpis.c3 > .kpi:last-child:nth-child(odd), .kpis.c5 > .kpi:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+.prog { margin-right: 1rem; }
+@media (max-width: 1080px) { .prog .bar { width: 3.6rem; } table.t th, table.t td { padding-left: .8rem; padding-right: .8rem; } }
+table.t { table-layout: auto; }
+table.t td:has(> .prog) { min-width: 9.5rem; }
+@media (max-width: 480px) { .prog { margin-right: 0; } }
+@media (max-width: 1080px) { .grp table.t { table-layout: auto; } }
